@@ -1,0 +1,68 @@
+##==============================================##
+name=WeActStudio AT32F403A Boards
+version=0.0.1
+##==============================================##
+
+####AT32 compile variables
+
+## compiler variables
+compiler.path={runtime.tools.xpack-arm-none-eabi-gcc.path}\bin\
+
+##All the command
+compiler.asm.cmd=arm-none-eabi-gcc
+compiler.c.cmd=arm-none-eabi-gcc
+compiler.cpp.cmd=arm-none-eabi-g++
+compiler.ar.cmd=arm-none-eabi-ar
+compiler.elf.cmd=arm-none-eabi-g++
+compiler.hex.cmd=arm-none-eabi-objcopy
+compiler.bin.cmd=arm-none-eabi-objcopy
+compiler.size.cmd=arm-none-eabi-size
+
+##Set the compiler flags
+compiler.ar.flags=rcs
+compiler.asm.flags=-mthumb -Wall -g -Os 
+compiler.c.flags=-mthumb -Wall -std=gnu11 -ffunction-sections -g -Os -fno-exceptions
+compiler.cpp.flags=-mthumb -Wall -std=gnu++11 -ffunction-sections -g -Os -fno-exceptions -fno-rtti
+compiler.elf.flags=-mthumb -g -Wl,--gc-sections -Wall --specs=nano.specs -lstdc++ -lm
+compiler.hex.flags=-Oihex
+compiler.bin.flags=-Obinary
+
+build.common_flags=-mthumb
+
+##===============================================##
+## In there,set the include path,for FrameLib use
+
+compiler.FrameLib.c.flags="-I{build.system.path}\Drivers\CMSIS\Include" "-I{build.system.path}\AT32F403A" "-I{build.system.path}\Drivers\Firmware\inc" "-I{build.system.path}\libcore" "-I{build.system.path}\libcore\config"
+
+##===============================================##
+
+recipe.S.o.pattern="{compiler.path}{compiler.asm.cmd}" {compiler.asm.flags} -mcpu={build.mcu} -c "{source_file}" -o "{object_file}"
+
+recipe.c.o.pattern="{compiler.path}{compiler.c.cmd}" {compiler.c.flags} -mcpu={build.mcu} -DF_CPU={build.f_cpu} -DARDUINO_{build.board} -DF_PLL_CLOCK_SOURCE={build.f_pll_clock_source} -DF_PLL_MULT={build.f_pll_mult} -DF_PLL_OUTPUT_RANGE={build.f_pll_output_range} -DF_HEXT_DIV={build.f_hext_div} -DF_HSI_DIV={build.f_hsi_div} {build.extra_flags} {compiler.FrameLib.c.flags} {includes} -c "{source_file}" -o "{object_file}"
+
+recipe.cpp.o.pattern="{compiler.path}{compiler.cpp.cmd}" {compiler.cpp.flags} -mcpu={build.mcu} -DF_CPU={build.f_cpu} -DARDUINO_{build.board} -DF_PLL_CLOCK_SOURCE={build.f_pll_clock_source} -DF_PLL_MULT={build.f_pll_mult} -DF_PLL_OUTPUT_RANGE={build.f_pll_output_range} -DF_HEXT_DIV={build.f_hext_div} -DF_HSI_DIV={build.f_hsi_div} {build.extra_flags} {compiler.FrameLib.c.flags} {includes} -c "{source_file}" -o "{object_file}"
+
+recipe.ar.pattern="{compiler.path}{compiler.ar.cmd}" {compiler.ar.flags} "{archive_file_path}" "{object_file}"
+
+recipe.c.combine.pattern="{compiler.path}{compiler.elf.cmd}" {compiler.elf.flags} -mcpu={build.mcu} "-L{build.variant.path}" "-T{build.variant.path}\{build.ldscript}" {object_files} "{archive_file_path}" "{build.variant.path}\{build.variant_system_lib}" -o "{build.path}/{build.project_name}.elf"
+##recipe.c.combine.pattern="{compiler.path}{compiler.elf.cmd}" {compiler.elf.flags} -mcpu={build.mcu} "-T{build.variant.path}/{build.ldscript}" "-Wl,-Map,{build.path}/{build.project_name}.map" -o "{build.path}/{build.project_name}.elf" "-L{build.path}" -lm -lgcc -mthumb -Wl,--cref -Wl,--check-sections -Wl,--gc-sections -Wl,--unresolved-symbols=report-all -Wl,--warn-common -Wl,--warn-section-align -Wl,--warn-unresolved-symbols -Wl,--start-group {object_files} -Wl,--whole-archive "{archive_file_path}" -Wl,--no-whole-archive -Wl,--end-group
+
+recipe.objcopy.eep.pattern=
+
+recipe.objcopy.hex.pattern="{compiler.path}{compiler.hex.cmd}" {compiler.hex.flags} "{build.path}/{build.project_name}.elf" "{build.path}/{build.project_name}.hex"
+
+recipe.size.pattern="{compiler.path}{compiler.size.cmd}" -A "{build.path}/{build.project_name}.elf" 
+
+recipe.size.regex=\.text\s+([0-9]+).*
+
+
+# Uploader tools
+# -------------------
+
+tools.Artery_ISP_Console.cmd=WeAct Studio Download Tool.bat
+tools.Artery_ISP_Console.cmd.windows=WeAct Studio Download Tool.bat
+tools.Artery_ISP_Console.path={runtime.tools.Artery_ISP_Console.path}
+
+tools.Artery_ISP_Console.upload.params.verbose=-d
+tools.Artery_ISP_Console.upload.params.quiet=
+tools.Artery_ISP_Console.upload.pattern="{path}\{cmd}" "{build.path}/{build.project_name}.hex"
