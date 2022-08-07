@@ -72,6 +72,13 @@
               "archiveFileName": "Artery_ISP_Console-0.0.1-windows.zip",
               "size": "3849553",
               "checksum": "SHA-256:81f03a390298006775c2f2d856c87802f49f021c84953e27c8e25ffd2a043f65"
+            },
+            {
+              "host": "x86_64-pc-linux-gnu",
+              "url": "https://github.com/ZYQ-FEIYUE/ArduinoCore-AT32F4/releases/download/v0.0.1/Artery_ISP_Console_Linux_V3.0.01.tar.bz2",
+              "archiveFileName": "Artery_ISP_Console_Linux_V3.0.01.tar.bz2",
+              "size": "4796449",
+              "checksum": "SHA-256:6c950695e0f801d1e5a3eadd0ae78abe15080c146aff0b36b1f20241dca70a87"
             }
           ]
         }
