@@ -23,7 +23,7 @@
 #ifndef __TONE_H
 #define __TONE_H
 
-#include "timer.h"
+#include "libcore/timer.h"
 
 #define TONE_DURATION_INFINITE  0xFFFFFFFFU
 
