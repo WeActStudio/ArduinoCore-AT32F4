@@ -1,8 +1,8 @@
 {
   "packages": [
     {
-      "name": "WeAct Studio",
-      "maintainer": "WeAct Studio",
+      "name": "WeActStudio",
+      "maintainer": "WeActStudio",
       "email": "",
       "websiteURL": "https://github.com/WeActStudio/ArduinoCore-AT32F4/",
       "help": {
@@ -14,10 +14,8 @@
           "architecture": "at32f403a",
           "version": "0.0.1",
           "category": "Contributed",
-          "url": "https://github.com/WeActStudio/ArduinoCore-AT32F4/releases/download/0.0.1/ArduinoCore-AT32F403A-0.0.1.tar.bz2",
-          "archiveFileName": "ArduinoCore-AT32F403A-0.0.1.tar.bz2",
-          "checksum": "SHA-256:33baf93c9ee19a5d20ed1cd71c1443c7b4fa24be2c16824329ba11b18fd75b40",
-          "size": "344734",
+          "url": "https://github.com/WeActStudio/ArduinoCore-AT32F4/archive/refs/heads/main.zip",
+          "archiveFileName": "ArduinoCore-AT32F4-main.zip",
           "help": {
               "online": ""
             },
@@ -28,12 +26,12 @@
           ],
           "toolsDependencies": [
             {
-              "packager": "WeAct Studio",
+              "packager": "WeActStudio",
               "name": "xpack-arm-none-eabi-gcc",
               "version": "11.2.1-1.2"
-            }, 
+            },
             {
-              "packager": "WeAct Studio",
+              "packager": "WeActStudio",
               "name": "Artery_ISP_Console",
               "version": "0.0.1"
             }
@@ -68,17 +66,17 @@
           "systems": [
             {
               "host": "i686-mingw32",
-              "url": "https://github.com/WeActStudio/ArduinoCore-AT32F4/releases/download/0.0.1/Artery_ISP_Console-0.0.1-windows.zip",
-              "archiveFileName": "Artery_ISP_Console-0.0.1-windows.zip",
-              "size": "3849553",
-              "checksum": "SHA-256:81f03a390298006775c2f2d856c87802f49f021c84953e27c8e25ffd2a043f65"
+              "url": "https://github.com/WeActStudio/ArduinoCore-AT32F4/releases/download/0.0.1/Artery_ISP_Console_Win_V3.0.01.zip",
+              "archiveFileName": "Artery_ISP_Console_Win_V3.0.01.zip",
+              "size": "3890476",
+              "checksum": "SHA-256:785979348d5c6b9451650d2ba22233825f362d46adfdfb1e4794e3866b4d034f"
             },
             {
               "host": "x86_64-pc-linux-gnu",
-              "url": "https://github.com/ZYQ-FEIYUE/ArduinoCore-AT32F4/releases/download/v0.0.1/Artery_ISP_Console_Linux_V3.0.01.tar.bz2",
+              "url": "https://github.com/WeActStudio/ArduinoCore-AT32F4/releases/download/0.0.1/Artery_ISP_Console_Linux_V3.0.01.tar.bz2",
               "archiveFileName": "Artery_ISP_Console_Linux_V3.0.01.tar.bz2",
-              "size": "4307698",
-              "checksum": "SHA-256:6b21819e56fb0fe3e67640e1a59d5c07069bf324b9e8fccbe4c026486818b35f"
+              "size": "14810873",
+              "checksum": "SHA-256:ee2f97a878735e43f114c5ee806064e3a0e8d2a5eeb0879d9fbe31d5b8e02078"
             }
           ]
         }
