@@ -13,7 +13,7 @@ WeActStudioAT32F4.build.core=arduino
 WeActStudioAT32F4.build.extra_flags=-DAT32F403ACGU7 -USE_STDPERIPH_DRIVER
 WeActStudioAT32F4.build.variant=AT32F403ACGU7
 WeActStudioAT32F4.build.variant_system_lib=FrameLib.a
-WeActStudioAT32F4.build.ldscript=linker_scripts\AT32F403AxG_FLASH.ld
+WeActStudioAT32F4.build.ldscript=linker_scripts/AT32F403AxG_FLASH.ld
 
 WeActStudioAT32F4.menu.pll_clock_source.hext_div2=high speed external crystal div 2
 WeActStudioAT32F4.menu.pll_clock_source.hext_div2.build.f_pll_clock_source=2

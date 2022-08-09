@@ -1,0 +1,86 @@
+{
+  "packages": [
+    {
+      "name": "WeActStudio",
+      "maintainer": "WeActStudio",
+      "email": "",
+      "websiteURL": "https://github.com/WeActStudio/ArduinoCore-AT32F4/",
+      "help": {
+        "online": "https://github.com/WeActStudio/ArduinoCore-AT32F4/"
+      },
+      "platforms": [
+        {
+          "name": "AT32F403ACGU7 Core Board",
+          "architecture": "at32f403a",
+          "version": "0.0.1",
+          "category": "Contributed",
+          "url": "https://github.com/WeActStudio/ArduinoCore-AT32F4/archive/refs/heads/main.zip",
+          "archiveFileName": "ArduinoCore-AT32F4-main.zip",
+          "help": {
+              "online": ""
+            },
+          "boards": [
+            {
+              "name": "BlackPill AT32F403ACGU7"
+            }
+          ],
+          "toolsDependencies": [
+            {
+              "packager": "WeActStudio",
+              "name": "xpack-arm-none-eabi-gcc",
+              "version": "11.2.1-1.2"
+            },
+            {
+              "packager": "WeActStudio",
+              "name": "Artery_ISP_Console",
+              "version": "0.0.1"
+            }
+          ]
+        }
+      ],
+      "tools": [
+        {
+          "name": "xpack-arm-none-eabi-gcc",
+          "version": "11.2.1-1.2",
+          "systems": [
+            {
+              "host": "i686-mingw32",
+              "url": "https://github.com/xpack-dev-tools/arm-none-eabi-gcc-xpack/releases/download/v11.2.1-1.2/xpack-arm-none-eabi-gcc-11.2.1-1.2-win32-x64.zip",
+              "archiveFileName": "xpack-arm-none-eabi-gcc-11.2.1-1.2-win32-x64.zip",
+              "checksum": "SHA-256:4a45e1df1c621f0a97a2bcb63977a3745ffcff7afc0e31ad2f3d5cc1272acf4b",
+              "size": "247612940"
+            },
+            {
+              "host": "x86_64-pc-linux-gnu",
+              "url": "https://github.com/xpack-dev-tools/arm-none-eabi-gcc-xpack/releases/download/v11.2.1-1.2/xpack-arm-none-eabi-gcc-11.2.1-1.2-linux-x64.tar.gz",
+              "archiveFileName": "xpack-arm-none-eabi-gcc-11.2.1-1.2-linux-x64.tar.gz",
+              "checksum": "SHA-256:7479becc1ea98fbceecadf1f036ddaba8dc39c9cce5cb45f0a7a36e923d33c9a",
+              "size": "235243515"
+            }
+
+          ]
+        },
+        {
+          "name": "Artery_ISP_Console",
+          "version": "0.0.1",
+          "systems": [
+            {
+              "host": "i686-mingw32",
+              "url": "https://github.com/WeActStudio/ArduinoCore-AT32F4/releases/download/0.0.1/Artery_ISP_Console_Win_V3.0.01.zip",
+              "archiveFileName": "Artery_ISP_Console_Win_V3.0.01.zip",
+              "size": "3890476",
+              "checksum": "SHA-256:785979348d5c6b9451650d2ba22233825f362d46adfdfb1e4794e3866b4d034f"
+            },
+            {
+              "host": "x86_64-pc-linux-gnu",
+              "url": "https://github.com/WeActStudio/ArduinoCore-AT32F4/releases/download/0.0.1/Artery_ISP_Console_Linux_V3.0.01.tar.bz2",
+              "archiveFileName": "Artery_ISP_Console_Linux_V3.0.01.tar.bz2",
+              "size": "14810873",
+              "checksum": "SHA-256:ee2f97a878735e43f114c5ee806064e3a0e8d2a5eeb0879d9fbe31d5b8e02078"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
