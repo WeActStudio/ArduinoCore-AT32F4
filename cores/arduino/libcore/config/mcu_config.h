@@ -54,6 +54,18 @@
 #  define SERIAL_3_IRQ_HANDLER_DEF()        void USART3_IRQHandler(void)
 #endif
 
+#define SERIAL_4_ENABLE                     1
+#if SERIAL_4_ENABLE
+#  define SERIAL_4_UART                    UART4
+#  define SERIAL_4_IRQ_HANDLER_DEF()        void UART4_IRQHandler(void)
+#endif
+
+#define SERIAL_5_ENABLE                     1
+#if SERIAL_5_ENABLE
+#  define SERIAL_5_UART                    UART5
+#  define SERIAL_5_IRQ_HANDLER_DEF()        void UART5_IRQHandler(void)
+#endif
+
 /* Wire (Software I2C) */
 #define WIRE_USE_FULL_SPEED_I2C             0
 #define WIRE_SDA_PIN                        PB7
