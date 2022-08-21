@@ -150,6 +150,30 @@ void HardwareSerial::begin(
         crm_periph_clock_enable(CRM_GPIOB_PERIPH_CLOCK, TRUE);
         crm_periph_clock_enable(CRM_USART3_PERIPH_CLOCK, TRUE);
     }
+    else if(_USARTx == UART4)
+    {
+        GPIOx = GPIOA;
+        Tx_Pin = GPIO_Pin_0;
+        Rx_Pin = GPIO_Pin_1;
+        USARTx_IRQn = UART4_IRQn;
+
+        crm_periph_clock_enable(CRM_GPIOA_PERIPH_CLOCK, TRUE);
+        crm_periph_clock_enable(CRM_UART4_PERIPH_CLOCK, TRUE);
+        crm_periph_clock_enable(CRM_IOMUX_PERIPH_CLOCK,TRUE);
+        gpio_pin_remap_config(UART4_GMUX_0010, TRUE);
+    }
+    else if(_USARTx == UART5)
+    {
+        GPIOx = GPIOB;
+        Tx_Pin = GPIO_Pin_9;
+        Rx_Pin = GPIO_Pin_8;
+        USARTx_IRQn = UART5_IRQn;
+
+        crm_periph_clock_enable(CRM_GPIOB_PERIPH_CLOCK, TRUE);
+        crm_periph_clock_enable(CRM_UART5_PERIPH_CLOCK, TRUE);
+        crm_periph_clock_enable(CRM_IOMUX_PERIPH_CLOCK,TRUE);
+        gpio_pin_remap_config(UART5_GMUX_0001, TRUE);
+    }
     else
     {
         return;
@@ -288,5 +312,23 @@ HardwareSerial Serial3(SERIAL_3_USART);
 extern "C" SERIAL_3_IRQ_HANDLER_DEF()
 {
     Serial3.IRQHandler();
+}
+#endif
+
+#if SERIAL_4_ENABLE
+HardwareSerial Serial4(SERIAL_4_UART);
+
+extern "C" SERIAL_4_IRQ_HANDLER_DEF()
+{
+    Serial4.IRQHandler();
+}
+#endif
+
+#if SERIAL_5_ENABLE
+HardwareSerial Serial5(SERIAL_5_UART);
+
+extern "C" SERIAL_5_IRQ_HANDLER_DEF()
+{
+    Serial5.IRQHandler();
 }
 #endif

@@ -65,4 +65,4 @@ tools.Artery_ISP_Console.path={runtime.tools.Artery_ISP_Console.path}
 
 tools.Artery_ISP_Console.upload.params.verbose=-d
 tools.Artery_ISP_Console.upload.params.quiet=
-tools.Artery_ISP_Console.upload.pattern=sh "{path}/{cmd}" "{build.path}/{build.project_name}.hex"
+tools.Artery_ISP_Console.upload.pattern="{path}/{cmd}" "{build.path}/{build.project_name}.hex"
