@@ -274,6 +274,24 @@ size_t Print::printFloat(double number, uint8_t digits)
     return n;
 }
 
+extern "C" {
+  __attribute__((weak))
+  int _write(int file, char *ptr, int len)
+  {
+    switch (file) {
+      case STDOUT_FILENO:
+      case STDERR_FILENO:
+        break;
+      case STDIN_FILENO:
+        break;
+      default:
+        ((class Print *)file)->write((uint8_t *)ptr, len);
+        break;
+    }
+    return len;
+  }
+}
+
 int Print::printf (const char *__restrict __format, ...)
 {
     char printf_buff[PRINT_PRINTF_BUFFER_LENGTH];
