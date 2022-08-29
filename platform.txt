@@ -26,8 +26,8 @@ compiler.cpp.flags=-mthumb -Wall -MMD -std=gnu++11 -ffunction-sections -g -Os -f
 compiler.elf.flags=-mthumb -g -Wl,--gc-sections -Wall -lstdc++ -lm
 compiler.hex.flags=-Oihex
 compiler.bin.flags=-Obinary
-compiler.combine.flags=-u _printf_float -u _sbrk -u link -u _close -u _fstat -u _isatty -u _lseek -u _read -u _write -u _exit -u kill -u _getpid
-compiler.c.elf.extra_flags="-L{build.variant.path}/ld" -specs=nosys.specs -specs=nano.specs {compiler.combine.flags}
+compiler.combine.flags=-u _sbrk -u link -u _close -u _fstat -u _isatty -u _lseek -u _read -u _write -u _exit -u kill -u _getpid
+compiler.c.elf.extra_flags=-specs=nosys.specs -specs=nano.specs {compiler.combine.flags}
 build.common_flags=-mthumb
 
 ##===============================================##
