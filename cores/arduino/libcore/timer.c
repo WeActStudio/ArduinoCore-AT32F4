@@ -512,7 +512,7 @@ do{\
   * @param  无
   * @retval 无
   */
-void TMR1_OV_TMR10_IRQHandler(void)
+void TMR1_OVF_TMR10_IRQHandler(void)
 {
     TMRx_IRQHANDLER(1);
     TMRx_IRQHANDLER(10);
@@ -587,7 +587,7 @@ void TMR7_GLOBAL_IRQHandler(void)
   * @param  无
   * @retval 无
   */
-void TMR8_OV_TMR13_IRQHandler(void)
+void TMR8_OVF_TMR13_IRQHandler(void)
 {
     TMRx_IRQHANDLER(8);
 #ifdef TMR13
@@ -600,7 +600,7 @@ void TMR8_OV_TMR13_IRQHandler(void)
   * @param  无
   * @retval 无
   */
-void TMR15_OV_IRQHandler(void)
+void TMR15_OVF_IRQHandler(void)
 {
 #ifdef TMR15
     TMRx_IRQHANDLER(15);
