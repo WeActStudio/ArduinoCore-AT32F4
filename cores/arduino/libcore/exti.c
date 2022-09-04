@@ -160,7 +160,7 @@ do{\
   * @param  无
   * @retval 无
   */
-void EXTI0_IRQHandler(void)
+void EXINT0_IRQHandler(void)
 {
     EXTIx_IRQHANDLER(0);
 }
@@ -170,7 +170,7 @@ void EXTI0_IRQHandler(void)
   * @param  无
   * @retval 无
   */
-void EXTI1_IRQHandler(void)
+void EXINT1_IRQHandler(void)
 {
     EXTIx_IRQHANDLER(1);
 }
@@ -180,7 +180,7 @@ void EXTI1_IRQHandler(void)
   * @param  无
   * @retval 无
   */
-void EXTI2_IRQHandler(void)
+void EXINT2_IRQHandler(void)
 {
     EXTIx_IRQHANDLER(2);
 }
@@ -190,7 +190,7 @@ void EXTI2_IRQHandler(void)
   * @param  无
   * @retval 无
   */
-void EXTI3_IRQHandler(void)
+void EXINT3_IRQHandler(void)
 {
     EXTIx_IRQHANDLER(3);
 }
@@ -200,7 +200,7 @@ void EXTI3_IRQHandler(void)
   * @param  无
   * @retval 无
   */
-void EXTI4_IRQHandler(void)
+void EXINT4_IRQHandler(void)
 {
     EXTIx_IRQHANDLER(4);
 }
@@ -210,7 +210,7 @@ void EXTI4_IRQHandler(void)
   * @param  无
   * @retval 无
   */
-void EXTI9_5_IRQHandler(void)
+void EXINT9_5_IRQHandler(void)
 {
     EXTIx_IRQHANDLER(5);
     EXTIx_IRQHANDLER(6);
@@ -224,7 +224,7 @@ void EXTI9_5_IRQHandler(void)
   * @param  无
   * @retval 无
   */
-void EXTI15_10_IRQHandler(void)
+void EXINT15_10_IRQHandler(void)
 {
     EXTIx_IRQHANDLER(10);
     EXTIx_IRQHANDLER(11);

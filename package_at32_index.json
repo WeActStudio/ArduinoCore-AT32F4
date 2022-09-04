@@ -12,7 +12,7 @@
         {
           "name": "AT32F403ACGU7 Core Board",
           "architecture": "at32f403a",
-          "version": "0.0.4",
+          "version": "0.0.5",
           "category": "Contributed",
           "url": "https://github.com/WeActStudio/ArduinoCore-AT32F4/archive/refs/heads/main.zip",
           "archiveFileName": "ArduinoCore-AT32F4-main.zip",
