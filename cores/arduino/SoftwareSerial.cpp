@@ -130,8 +130,8 @@ void SoftwareSerial::setSpeed(uint32_t speed)
           pre *= 2;
         }
       } while (cmp_value >= UINT16_MAX);
-      Timer_SetPrescaler(TIMER_SERIAL, pre);
-      Timer_SetReload(TIMER_SERIAL, cmp_value);
+      Timer_SetPrescaler(TIMER_SERIAL, pre - 1);
+      Timer_SetReload(TIMER_SERIAL, cmp_value - 1);
       Timer_SetCounter(TIMER_SERIAL, 0);
       // Timer_Resume(TIMER_SERIAL);
     } else {
