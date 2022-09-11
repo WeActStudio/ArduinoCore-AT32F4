@@ -403,6 +403,7 @@ match:
 
     tmr_flag_clear(TIMx, TMR_OVF_FLAG);
     tmr_interrupt_enable(TIMx, TMR_OVF_INT, TRUE);
+    tmr_counter_enable(TIMx, TRUE);
 }
 
 /**
@@ -484,7 +485,10 @@ void Timer_SetReload(tmr_type* TIMx, uint16_t Reload)
 {
     TIMx->pr = Reload;
 }
-
+void Timer_SetCounter(tmr_type* TIMx, uint32_t Counter)
+{
+    TIMx->cval = Counter;
+}
 /**
   * @brief  应用定时器更改
   * @param  TIMx: 定时器地址
@@ -493,6 +497,40 @@ void Timer_SetReload(tmr_type* TIMx, uint16_t Reload)
 void Timer_GenerateUpdate(tmr_type* TIMx)
 {
     TIMx->swevt_bit.ovfswtr = TRUE;
+}
+
+/**
+ * @brief stop timer
+ * @param None
+ * @retval None
+ */
+void Timer_Pause(tmr_type* TIMx)
+{
+    // Disable all IT
+    tmr_interrupt_enable(TIMx, TMR_OVF_INT, FALSE);
+    tmr_interrupt_enable(TIMx, TMR_C1_INT, FALSE);
+    tmr_interrupt_enable(TIMx, TMR_C2_INT, FALSE);
+    tmr_interrupt_enable(TIMx, TMR_C3_INT, FALSE);
+    tmr_interrupt_enable(TIMx, TMR_C4_INT, FALSE);
+
+    // Stop timer
+    tmr_counter_enable(TIMx, FALSE);
+}
+
+/**
+ * @brief resume timer
+ * @param None
+ * @retval None
+ */
+void Timer_Resume(tmr_type* TIMx)
+{
+    tmr_flag_clear(TIMx, TMR_OVF_FLAG);
+    tmr_interrupt_enable(TIMx, TMR_OVF_INT, TRUE);
+    tmr_counter_enable(TIMx, TRUE);
+    tmr_interrupt_enable(TIMx, TMR_C1_INT, TRUE);
+    tmr_interrupt_enable(TIMx, TMR_C2_INT, TRUE);
+    tmr_interrupt_enable(TIMx, TMR_C3_INT, TRUE);
+    tmr_interrupt_enable(TIMx, TMR_C4_INT, TRUE);
 }
 
 #define TMRx_IRQHANDLER(n) \
