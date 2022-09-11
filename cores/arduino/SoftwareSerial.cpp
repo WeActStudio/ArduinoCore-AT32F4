@@ -114,7 +114,6 @@ uint32_t SoftwareSerial::cur_speed = 0;
 
 void SoftwareSerial::setSpeed(uint32_t speed)
 {
-  return;
   if (speed != cur_speed) {
     // Timer_Pause(TIMER_SERIAL);
     if (speed != 0) {
