@@ -65,7 +65,7 @@ void I2Cx_Init(i2c_type *I2Cx, uint32_t baudRate)
 
 void I2Cx_ClearADDRFlag(i2c_type* I2Cx)
 {
-  __IO uint32_t tmpreg;
+  __attribute__((unused)) __IO uint32_t tmpreg;
 
   tmpreg = I2Cx->sts1;
 
