@@ -77,17 +77,19 @@ void Timer_ClockCmd(tmr_type* TIMx, bool Enable)
 
 static float Qsqrt(float number)
 {
-    long i;
-    float x2, y;
+    union {
+      long i;
+      float y;
+    } cast;
+
+    float x2;
     const float threehalfs = 1.5f;
     x2 = number * 0.5f;
-    y  = number;
-    i  = *(long*)&y;
-    i  = 0x5f3759df - (i >> 1);
-    y  = *(float*)&i;
-    y  = y * (threehalfs - (x2 * y * y));
-    y  = y * (threehalfs - (x2 * y * y));
-    return 1.0f / y;
+    cast.y  = number;
+    cast.i  = 0x5f3759df - (cast.i >> 1);
+    cast.y  = cast.y * (threehalfs - (x2 * cast.y * cast.y));
+    cast.y  = cast.y * (threehalfs - (x2 * cast.y * cast.y));
+    return 1.0f / cast.y;
 }
 
 /**
