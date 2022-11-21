@@ -66,6 +66,24 @@
 #  define SERIAL_5_IRQ_HANDLER_DEF()        void UART5_IRQHandler(void)
 #endif
 
+#define SERIAL_6_ENABLE                     1
+#if SERIAL_6_ENABLE
+#  define SERIAL_6_USART                    USART6
+#  define SERIAL_6_IRQ_HANDLER_DEF()        void USART6_IRQHandler(void)
+#endif
+
+#define SERIAL_7_ENABLE                     1
+#if SERIAL_7_ENABLE
+#  define SERIAL_7_UART                    UART7
+#  define SERIAL_7_IRQ_HANDLER_DEF()        void UART7_IRQHandler(void)
+#endif
+
+#define SERIAL_8_ENABLE                     1
+#if SERIAL_8_ENABLE
+#  define SERIAL_8_UART                    UART8
+#  define SERIAL_8_IRQ_HANDLER_DEF()        void UART8_IRQHandler(void)
+#endif
+
 /* Wire (Software I2C) */
 #define WIRE_USE_FULL_SPEED_I2C             0
 #define WIRE_SDA_PIN                        PB7

@@ -159,7 +159,7 @@ void HardwareSerial::begin(
 
         crm_periph_clock_enable(CRM_GPIOA_PERIPH_CLOCK, TRUE);
         crm_periph_clock_enable(CRM_UART4_PERIPH_CLOCK, TRUE);
-        crm_periph_clock_enable(CRM_IOMUX_PERIPH_CLOCK,TRUE);
+        crm_periph_clock_enable(CRM_IOMUX_PERIPH_CLOCK, TRUE);
         gpio_pin_remap_config(UART4_GMUX_0010, TRUE);
     }
     else if(_USARTx == UART5)
@@ -171,8 +171,42 @@ void HardwareSerial::begin(
 
         crm_periph_clock_enable(CRM_GPIOB_PERIPH_CLOCK, TRUE);
         crm_periph_clock_enable(CRM_UART5_PERIPH_CLOCK, TRUE);
-        crm_periph_clock_enable(CRM_IOMUX_PERIPH_CLOCK,TRUE);
+        crm_periph_clock_enable(CRM_IOMUX_PERIPH_CLOCK, TRUE);
         gpio_pin_remap_config(UART5_GMUX_0001, TRUE);
+    }
+    else if (_USARTx == USART6)
+    {
+        GPIOx = GPIOA;
+        Tx_Pin = GPIO_Pin_4;
+        Rx_Pin = GPIO_Pin_5;
+        USARTx_IRQn = USART6_IRQn;
+
+        crm_periph_clock_enable(CRM_GPIOA_PERIPH_CLOCK, TRUE);
+        crm_periph_clock_enable(CRM_USART6_PERIPH_CLOCK, TRUE);
+    }
+    else if (_USARTx == UART7)
+    {
+        GPIOx = GPIOB;
+        Tx_Pin = GPIO_Pin_4;
+        Rx_Pin = GPIO_Pin_3;
+        USARTx_IRQn = UART7_IRQn;
+
+        crm_periph_clock_enable(CRM_GPIOB_PERIPH_CLOCK, TRUE);
+        crm_periph_clock_enable(CRM_UART7_PERIPH_CLOCK, TRUE);
+        crm_periph_clock_enable(CRM_IOMUX_PERIPH_CLOCK, TRUE);
+        gpio_pin_remap_config(UART7_GMUX, TRUE);
+    }
+    else if (_USARTx == UART8)
+    {
+        GPIOx = GPIOC;
+        Tx_Pin = GPIO_Pin_2;
+        Rx_Pin = GPIO_Pin_3;
+        USARTx_IRQn = UART8_IRQn;
+
+        crm_periph_clock_enable(CRM_GPIOC_PERIPH_CLOCK, TRUE);
+        crm_periph_clock_enable(CRM_UART8_PERIPH_CLOCK, TRUE);
+        crm_periph_clock_enable(CRM_IOMUX_PERIPH_CLOCK, TRUE);
+        gpio_pin_remap_config(UART8_GMUX, TRUE);
     }
     else
     {
@@ -330,5 +364,32 @@ HardwareSerial Serial5(SERIAL_5_UART);
 extern "C" SERIAL_5_IRQ_HANDLER_DEF()
 {
     Serial5.IRQHandler();
+}
+#endif
+
+#if SERIAL_6_ENABLE
+HardwareSerial Serial6(SERIAL_6_USART);
+
+extern "C" SERIAL_6_IRQ_HANDLER_DEF()
+{
+    Serial6.IRQHandler();
+}
+#endif
+
+#if SERIAL_7_ENABLE
+HardwareSerial Serial7(SERIAL_7_UART);
+
+extern "C" SERIAL_7_IRQ_HANDLER_DEF()
+{
+    Serial7.IRQHandler();
+}
+#endif
+
+#if SERIAL_8_ENABLE
+HardwareSerial Serial8(SERIAL_8_UART);
+
+extern "C" SERIAL_8_IRQ_HANDLER_DEF()
+{
+    Serial8.IRQHandler();
 }
 #endif
