@@ -294,22 +294,16 @@ extern "C" {
     return len;
   }
 }
-
+#ifdef SUPPORTS_PRINTF
 int Print::printf (const char *__restrict __format, ...)
 {
-    // char printf_buff[PRINT_PRINTF_BUFFER_LENGTH];
+    char printf_buff[PRINT_PRINTF_BUFFER_LENGTH];
 
-    // va_list args;
-    // va_start(args, __format);
-    // int ret_status = vsnprintf(printf_buff, sizeof(printf_buff), __format, args);
-    // va_end(args);
-    // print(printf_buff);
-    //  return ret_status;
-    FILE *__restrict __stream;
-    int ret_status = 0;
     va_list args;
-    va_start(args,__format);
-    ret_status = vfprintf(__stream, __format, args);
+    va_start(args, __format);
+    int ret_status = vsnprintf(printf_buff, sizeof(printf_buff), __format, args);
     va_end(args);
-    return ret_status; 
+    print(printf_buff);
+    return ret_status;
 }
+#endif
