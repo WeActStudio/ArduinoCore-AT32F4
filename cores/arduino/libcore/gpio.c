@@ -270,8 +270,8 @@ void GPIOx_Init(
   */
 void GPIO_JTAG_Disable(void)
 {
-//    RCC_APB2PeriphClockCmd(RCC_APB2PERIPH_AFIO, ENABLE);
-//    GPIO_PinsRemapConfig(GPIO_Remap_SWJ_JTAGDisable, ENABLE);
+    crm_periph_clock_enable(CRM_IOMUX_PERIPH_CLOCK, TRUE);
+    gpio_pin_remap_config(SWJTAG_GMUX_010, TRUE);
 }
 
 /**

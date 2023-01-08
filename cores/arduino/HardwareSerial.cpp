@@ -184,6 +184,8 @@ void HardwareSerial::begin(
 
         crm_periph_clock_enable(CRM_GPIOA_PERIPH_CLOCK, TRUE);
         crm_periph_clock_enable(CRM_USART6_PERIPH_CLOCK, TRUE);
+        crm_periph_clock_enable(CRM_IOMUX_PERIPH_CLOCK, TRUE);
+        gpio_pin_remap_config(USART6_GMUX, TRUE);
     }
     else if (_USARTx == UART7)
     {
@@ -214,13 +216,19 @@ void HardwareSerial::begin(
         return;
     }
 
-    gpio_default_para_init(&gpio_init_struct);
-    gpio_init_struct.gpio_pins =  Tx_Pin | Rx_Pin;
-    gpio_init_struct.gpio_drive_strength = GPIO_DRIVE_STRENGTH_STRONGER;
-    gpio_init_struct.gpio_mode = GPIO_MODE_MUX;
-    gpio_init_struct.gpio_pull = GPIO_PULL_NONE;
-    gpio_init_struct.gpio_out_type  = GPIO_OUTPUT_PUSH_PULL;
-    gpio_init(GPIOx, &gpio_init_struct);
+	gpio_init_struct.gpio_drive_strength = GPIO_DRIVE_STRENGTH_STRONGER;
+	gpio_init_struct.gpio_out_type  = GPIO_OUTPUT_PUSH_PULL;
+	gpio_init_struct.gpio_mode = GPIO_MODE_MUX;
+	gpio_init_struct.gpio_pins = Tx_Pin;
+	gpio_init_struct.gpio_pull = GPIO_PULL_NONE;
+	gpio_init(GPIOx, &gpio_init_struct);
+	
+	gpio_init_struct.gpio_drive_strength = GPIO_DRIVE_STRENGTH_STRONGER;
+	gpio_init_struct.gpio_out_type  = GPIO_OUTPUT_PUSH_PULL;
+	gpio_init_struct.gpio_mode = GPIO_MODE_INPUT;
+	gpio_init_struct.gpio_pins = Rx_Pin;
+	gpio_init_struct.gpio_pull = GPIO_PULL_UP;
+	gpio_init(GPIOx, &gpio_init_struct);
 
     usart_init(_USARTx, baudRate, SERIAL_ConfigGrp[config].data_bit, SERIAL_ConfigGrp[config].stop_bit);
     usart_parity_selection_config(_USARTx, SERIAL_ConfigGrp[config].parity_selection);
