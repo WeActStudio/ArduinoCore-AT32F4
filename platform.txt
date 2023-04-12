@@ -39,9 +39,9 @@ compiler.FrameLib.c.flags="-I{build.system.path}/Drivers/CMSIS/Include" "-I{buil
 
 recipe.S.o.pattern="{compiler.path}{compiler.asm.cmd}" {compiler.asm.flags} -mcpu={build.mcu} -c "{source_file}" -o "{object_file}"
 
-recipe.c.o.pattern="{compiler.path}{compiler.c.cmd}" {compiler.c.flags} -mcpu={build.mcu} -DF_CPU={build.f_cpu} -DARDUINO_{build.board} -DF_PLL_CLOCK_SOURCE={build.f_pll_clock_source} -DF_PLL_MULT={build.f_pll_mult} -DF_PLL_OUTPUT_RANGE={build.f_pll_output_range} -DF_HEXT_DIV={build.f_hext_div} -DF_HSI_DIV={build.f_hsi_div} {build.extra_flags} {compiler.FrameLib.c.flags} {includes} -c "{source_file}" -o "{object_file}"
+recipe.c.o.pattern="{compiler.path}{compiler.c.cmd}" {compiler.c.flags} -mcpu={build.mcu} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DF_PLL_CLOCK_SOURCE={build.f_pll_clock_source} -DF_PLL_MULT={build.f_pll_mult} -DF_PLL_OUTPUT_RANGE={build.f_pll_output_range} -DF_HEXT_DIV={build.f_hext_div} -DF_HSI_DIV={build.f_hsi_div} {build.extra_flags} {compiler.FrameLib.c.flags} {includes} -c "{source_file}" -o "{object_file}"
 
-recipe.cpp.o.pattern="{compiler.path}{compiler.cpp.cmd}" {compiler.cpp.flags} -mcpu={build.mcu} -DF_CPU={build.f_cpu} -DARDUINO_{build.board} -DF_PLL_CLOCK_SOURCE={build.f_pll_clock_source} -DF_PLL_MULT={build.f_pll_mult} -DF_PLL_OUTPUT_RANGE={build.f_pll_output_range} -DF_HEXT_DIV={build.f_hext_div} -DF_HSI_DIV={build.f_hsi_div} {build.extra_flags} {compiler.FrameLib.c.flags} {includes} -c "{source_file}" -o "{object_file}"
+recipe.cpp.o.pattern="{compiler.path}{compiler.cpp.cmd}" {compiler.cpp.flags} -mcpu={build.mcu} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DF_PLL_CLOCK_SOURCE={build.f_pll_clock_source} -DF_PLL_MULT={build.f_pll_mult} -DF_PLL_OUTPUT_RANGE={build.f_pll_output_range} -DF_HEXT_DIV={build.f_hext_div} -DF_HSI_DIV={build.f_hsi_div} {build.extra_flags} {compiler.FrameLib.c.flags} {includes} -c "{source_file}" -o "{object_file}"
 
 recipe.ar.pattern="{compiler.path}{compiler.ar.cmd}" {compiler.ar.flags} "{archive_file_path}" "{object_file}"
 
